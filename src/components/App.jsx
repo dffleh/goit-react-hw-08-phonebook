@@ -1,5 +1,7 @@
+import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import { Wrap } from './App.styled';
+import { FormContacts } from './FormContacts/FormContacts';
 
 export class App extends Component {
   state = {
@@ -13,29 +15,22 @@ export class App extends Component {
     name: '',
     number: '',
   };
+
+  // addContact = ({ name, number, id = nanoid() }) => {
+  //   const { contacts } = this.state;
+  //   const newContact = {
+  //     id,
+  //     name,
+  //     number,
+  //   };
+  //   console.log(this.addContact);
+  // };
+
   render() {
     return (
       <Wrap>
         <h2>Phonebook</h2>
-        <div>
-          <h3>Name</h3>
-          <input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-          <h3>Number</h3>
-          <input
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-          <button>Add contact</button>
-        </div>
+        <FormContacts onSubmit={this.addContact} />
         <div>
           <h2>Contacts</h2>
           <h3>Find contacts by name</h3>
