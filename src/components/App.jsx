@@ -1,6 +1,8 @@
 import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import { Wrap } from './App.styled';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 import { FormContacts } from './FormContacts/FormContacts';
 
 export class App extends Component {
@@ -12,34 +14,49 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
-  // addContact = ({ name, number, id = nanoid() }) => {
-  //   const { contacts } = this.state;
-  //   const newContact = {
-  //     id,
-  //     name,
-  //     number,
-  //   };
-  //   console.log(this.addContact);
-  // };
+  addContact = ({ name, number, id = nanoid() }) => {
+    const { contacts } = this.state;
+    const newContact = {
+      id,
+      name,
+      number,
+    };
+    contacts.find(contact => contact.name === name)
+      ? alert(`${name} is already in contacts`)
+      : this.setState(({ contacts }) => ({
+          contacts: [newContact, ...contacts],
+        }));
+  };
+
+  deleteContact = nanoid => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== nanoid),
+    }));
+  };
+
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
 
   render() {
+    const { contacts, filter } = this.state;
+    const visibleContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
     return (
       <Wrap>
         <h2>Phonebook</h2>
         <FormContacts onSubmit={this.addContact} />
         <div>
           <h2>Contacts</h2>
-          <h3>Find contacts by name</h3>
-          <input type="text" />
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+          <Filter value={filter} onChange={this.changeFilter} />
+
+          <ContactList
+            contacts={visibleContacts}
+            deleteContact={this.deleteContact}
+          />
         </div>
       </Wrap>
     );
