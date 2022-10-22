@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 export const ContactItem = ({ nanoid, name, number, deleteContact }) => {
   return (
     <>
@@ -11,4 +12,11 @@ export const ContactItem = ({ nanoid, name, number, deleteContact }) => {
       </li>
     </>
   );
+};
+
+ContactItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  nanoid: PropTypes.string.isRequired,
+  deleteContact: PropTypes.func.isRequired,
 };
