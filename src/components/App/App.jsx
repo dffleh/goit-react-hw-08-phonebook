@@ -1,9 +1,8 @@
-import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import { Wrap } from './App.styled';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import { FormContacts } from './FormContacts/FormContacts';
+import { ContactList } from '../ContactList/ContactList';
+import { Filter } from '../Filter/Filter';
+import { FormContacts } from '../FormContacts/FormContacts';
 
 export class App extends Component {
   state = {
@@ -29,10 +28,9 @@ export class App extends Component {
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
-    console.log(localStorage);
   }
 
-  addContact = ({ name, number, id = nanoid() }) => {
+  addContact = ({ name, number, id }) => {
     const { contacts } = this.state;
     const newContact = {
       id,
