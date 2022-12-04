@@ -1,22 +1,30 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-export const ContactItem = ({ nanoid, name, number, deleteContact }) => {
+import { useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/contactSlice';
+
+const ContactItem = ({ contact }) => {
+  const dispatch = useDispatch();
+  const onDelete = id => dispatch(deleteContact(id));
+
   return (
-    <>
-      <li key={nanoid}>
-        <p>
-          {name}: {number}
-        </p>
-        <button type="button" onClick={() => deleteContact(nanoid)}>
-          Delete
-        </button>
-      </li>
-    </>
+    <ul>
+      <p>
+        {contact.name}: {contact.number}
+      </p>
+      <button type="button" onClick={() => onDelete(contact.id)}>
+        Delete Contact
+      </button>
+    </ul>
   );
 };
 
 ContactItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  nanoid: PropTypes.string.isRequired,
-  deleteContact: PropTypes.func.isRequired,
+  contact: PropTypes.exact({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }),
 };
+
+export default ContactItem;
