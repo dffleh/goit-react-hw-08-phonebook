@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactSlice';
+import { deleteContact } from 'redux/operations';
 
 const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
-  const onDelete = id => dispatch(deleteContact(id));
-
+  const onDelete = () => {
+    dispatch(deleteContact(contact.id));
+  };
   return (
     <ul>
       <p>
@@ -18,7 +19,6 @@ const ContactItem = ({ contact }) => {
     </ul>
   );
 };
-
 ContactItem.propTypes = {
   contact: PropTypes.exact({
     id: PropTypes.string.isRequired,

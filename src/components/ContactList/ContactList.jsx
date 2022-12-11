@@ -1,9 +1,10 @@
-import ContactItem from 'components/ContactItem/ContactItem';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selector';
 
-const ContactList = () => {
+import ContactItem from 'components/ContactItem/ContactItem';
+
+export const ContactList = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
 
@@ -19,5 +20,3 @@ const ContactList = () => {
     </ul>
   );
 };
-
-export default ContactList;
