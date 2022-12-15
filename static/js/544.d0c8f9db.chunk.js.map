@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/544.d0c8f9db.chunk.js","mappings":"kKAQA,UARA,WACE,OACE,0BACE,iDAGL,C","sources":["pages/Home/Home.jsx"],"sourcesContent":["function Home() {\n  return (\n    <div>\n      <h1>Welcome to Contacts</h1>\n    </div>\n  );\n}\n\nexport default Home;\n"],"names":[],"sourceRoot":""}
