@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { AppBar } from 'components/AppBar/AppBar';
+
 export const Layout = () => {
   return (
     <div style={{ maxWidth: 1800, margin: '0 auto', padding: '0 16px' }}>

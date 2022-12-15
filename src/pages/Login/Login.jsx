@@ -1,3 +1,4 @@
+import { LoginForm } from 'components/LoginForm/LoginForm';
 import { Helmet } from 'react-helmet';
 
 function Login() {

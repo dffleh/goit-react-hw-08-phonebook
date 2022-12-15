@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
-import { getContacts } from 'redux/selector';
+import { getContacts } from 'redux/contacts/selector';
+import { addContact } from 'redux/contacts/operations';
 
-export default function FormContacts() {
+import { Label } from '@mui/icons-material';
+import { Button, TextField } from '@mui/material';
+
+export default function FormContact() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -42,9 +45,10 @@ export default function FormContacts() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Name
-        <input
+      <Label>
+        <TextField
+          variant="outlined"
+          label="Name"
           type="text"
           name="name"
           onChange={handleChange}
@@ -53,11 +57,11 @@ export default function FormContacts() {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-      </label>
-
-      <label>
-        Number
-        <input
+      </Label>
+      <Label>
+        <TextField
+          variant="outlined"
+          label="Number"
           type="tel"
           name="number"
           onChange={handleChange}
@@ -66,8 +70,10 @@ export default function FormContacts() {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-      </label>
-      <button type="submit">Add contact</button>
+      </Label>
+      <Button type="submit" variant="contained">
+        Add contact
+      </Button>
     </form>
   );
 }
