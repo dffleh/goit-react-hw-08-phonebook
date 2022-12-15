@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
 import { getContacts } from 'redux/selector';
 
-export default function ContactForm() {
+export default function FormContacts() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 

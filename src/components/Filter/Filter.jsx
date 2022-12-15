@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilterValue } from 'redux/contactSlice';
+import { setFilterValue } from 'redux/contacts/contactSlice';
 import { getFilter } from 'redux/selector';
 
 export const Filter = () => {
