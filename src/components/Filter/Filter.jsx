@@ -4,6 +4,7 @@ import { setFilterValue } from 'redux/contacts/contactSlice';
 import { getFilter } from 'redux/contacts/selector';
 
 import { TextField } from '@mui/material';
+import { Label } from './Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export const Filter = () => {
   };
 
   return (
-    <label>
+    <Label>
       <TextField
         id="outlined-basic"
         label="Find contacts by name"
@@ -23,6 +24,6 @@ export const Filter = () => {
         onChange={onChange}
         value={filter}
       />
-    </label>
+    </Label>
   );
 };

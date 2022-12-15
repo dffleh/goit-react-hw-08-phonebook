@@ -1,8 +1,10 @@
+import { Container, Title } from './Home.styled';
+
 function Home() {
   return (
-    <div>
-      <h1>Welcome to Contacts</h1>
-    </div>
+    <Container>
+      <Title>Welcome to our PhoneBook</Title>
+    </Container>
   );
 }
 
